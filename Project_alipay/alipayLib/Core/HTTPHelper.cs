@@ -21,7 +21,7 @@ namespace alipay.Lib.Core
         {
             string result = string.Empty;
             WebRequest webRequest = WebRequest.Create(url);
-            webRequest.Method = MethodTypeEnum.Post.ToString();
+            webRequest.Method = MethodTypeEnum.Post.ToString(); 
             webRequest.ContentType = "application/" + ContentType.ToString();
             byte[] reqBodyBytes = System.Text.Encoding.UTF8.GetBytes(strData); //指定编码，微信用的是UTF8，我起初用的是default，以为默认是utf8的，后来发现这受操作系统影响的。
             Stream reqStream = webRequest.GetRequestStream();//加入需要发送的参数
