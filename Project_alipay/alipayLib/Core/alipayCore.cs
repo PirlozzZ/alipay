@@ -10,7 +10,7 @@ namespace alipay.Lib.Core
     public class alipayCore
     {
         log4net.ILog log = log4net.LogManager.GetLogger("Log.Logging");
-        private Config config;
+        public Config config;
         #region 构造方法
         public alipayCore() : this("")
         {
@@ -18,9 +18,8 @@ namespace alipay.Lib.Core
         }
 
         public alipayCore(string sign)
-        {
+        { 
             config = new Config(sign);
-            
         }
         #endregion
 
@@ -64,34 +63,34 @@ namespace alipay.Lib.Core
         /// <param name="code"></param>
         /// <param name="agentid"></param>
         /// <returns></returns>
-        public OAuth_UserInfo OAuth_getUserInfo(string code)
-        {
-            OAuth_UserInfo instance = null;
-            string result = string.Empty;
-            if (!string.IsNullOrEmpty(code))
-            {
-                string url = string.Format("https://openapi.alipay.com/gateway.do");
-                try
-                {
-                    result = HTTPHelper.PostRequest(url, DataTypeEnum.json, string.Format("{\"code\": \"{0}\",\"grant_type\":\"authorization_code\"}", code));
-                    log.Info("OAuth_getUserInfo result" + result);
-                    instance = JsonConvert.DeserializeObject<OAuth_UserInfo>(result);
-                    //if (instance != null)
-                    //{
+        //public OAuth_UserInfo OAuth_getUserInfo(string code)
+        //{
+        //    OAuth_UserInfo instance = null;
+        //    string result = string.Empty;
+        //    if (!string.IsNullOrEmpty(code))
+        //    {
+        //        string url = string.Format("https://openapi.alipay.com/gateway.do");
+        //        try
+        //        {
+        //            result = HTTPHelper.PostRequest(url, DataTypeEnum.json, string.Format("{\"code\": \"{0}\",\"grant_type\":\"authorization_code\"}", code));
+        //            log.Info("OAuth_getUserInfo result" + result);
+        //            instance = JsonConvert.DeserializeObject<OAuth_UserInfo>(result);
+        //            //if (instance != null)
+        //            //{
                          
-                    //}
-                    //else
-                    //{
-                    //    log.Info(string.Format("OAuth_getUserInfo JsonConvert Failed:{0}", result));
-                    //}
-                }
-                catch (Exception e)
-                {
-                    log.Error(string.Format("OAuth_getUserInfo ERR:{0}", url), e);
-                }
-            }
-            return instance;
-        }
+        //            //}
+        //            //else
+        //            //{
+        //            //    log.Info(string.Format("OAuth_getUserInfo JsonConvert Failed:{0}", result));
+        //            //}
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            log.Error(string.Format("OAuth_getUserInfo ERR:{0}", url), e);
+        //        }
+        //    }
+        //    return instance;
+        //}
         #endregion
     }
 }

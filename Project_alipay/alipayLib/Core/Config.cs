@@ -15,9 +15,14 @@ namespace alipay.Lib.Core
 
         public Config(string sign)
         {
-            app_id = ConfigurationManager.AppSettings[sign + "app_id"]; 
+            
+            app_id = ConfigurationManager.AppSettings[sign + "app_id"];
+            privateKey = ConfigurationManager.AppSettings[sign + "privateKey"];
+            publicKey = ConfigurationManager.AppSettings[sign + "publicKey"];
         }
 
-        public string app_id { get; private set; } 
+        public string app_id { get; private set; }
+        public string privateKey { get; private set; }
+        public string publicKey { get; private set; }
     }
 }
