@@ -43,7 +43,7 @@ namespace alipay.Lib.Core
         /// <param name="scope">应用授权作用域
         /// <param name="state">重定向后会带上state参数</param>
         /// <returns></returns>
-        public string OAuth_getURL(string para_URL, ScopeTypeEnum scope, string state)
+        public string GetOAuth_URL(string para_URL, ScopeTypeEnum scope, string state)
         {
             string OAuth_URL = string.Empty;
             try
